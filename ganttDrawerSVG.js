@@ -212,6 +212,93 @@ Ganttalendar.prototype.createGanttGrid = function () {
 	return box;
 };
 
+Ganttalendar.invert = function (color, bw) {
+	const BW_THRESHOLD = Math.sqrt(1.05 * 0.05) - 0.05;
+	const RE_HEX = /^(?:[0-9a-f]{3}){1,2}$/i;
+	const DEFAULT_BW_COLORS = {
+		black: '#000000',
+		white: '#ffffff'
+	};
+
+	function padz(str, len) {
+		len = len || 2;
+		return (new Array(len).join('0') + str).slice(-len);
+	}
+
+	function toObj(c) {
+		return {r: c[0], g: c[1], b: c[2]};
+	}
+
+	function hexToRGB(hex) {
+		if (hex.slice(0, 1) === '#') hex = hex.slice(1);
+		if (!RE_HEX.test(hex)) throw new Error(`Invalid HEX color: "${hex}"`);
+		// normalize / convert 3-chars hex to 6-chars.
+		if (hex.length === 3) {
+			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+		}
+		return [
+			parseInt(hex.slice(0, 2), 16), // r
+			parseInt(hex.slice(2, 4), 16), // g
+			parseInt(hex.slice(4, 6), 16)  // b
+		];
+	}
+
+	// c = String (hex) | Array [r, g, b] | Object {r, g, b}
+	function toRGB(c) {
+		if (!c) {
+			app.errorLog('Invalid color value');
+		}
+		if (Array.isArray(c)) return c;
+		return typeof c === 'string' ? hexToRGB(c) : [c.r, c.g, c.b];
+	}
+
+	// http://stackoverflow.com/a/3943023/112731
+	function getLuminance(c) {
+		let i, x;
+		const a = []; // so we don't mutate
+		for (i = 0; i < c.length; i++) {
+			x = c[i] / 255;
+			a[i] = x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+		}
+		return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+	}
+
+	function invertToBW(color, bw, asArr) {
+		const colors = (bw === true)
+			? DEFAULT_BW_COLORS
+			: Object.assign({}, DEFAULT_BW_COLORS, bw);
+		return getLuminance(color) > BW_THRESHOLD
+			? (asArr ? hexToRGB(colors.black) : colors.black)
+			: (asArr ? hexToRGB(colors.white) : colors.white);
+	}
+
+	function invert(color, bw) {
+		color = toRGB(color);
+		if (bw) return invertToBW(color, bw);
+		return '#' + color.map(c => padz((255 - c).toString(16))).join('');
+	}
+
+	invert.asRgbArray = (color, bw) => {
+		color = toRGB(color);
+		return bw ? invertToBW(color, bw, true) : color.map(c => 255 - c);
+	};
+
+	invert.asRgbObject = (color, bw) => {
+		color = toRGB(color);
+		return toObj(bw ? invertToBW(color, bw, true) : color.map(c => 255 - c));
+	};
+
+	return invert(color, bw);
+};
+
+Ganttalendar.getTextColor = function (task) {
+	let color = '#000';
+	if (typeof task.color !== 'undefined' && task.color !== null) {
+		color = Ganttalendar.invert(task.color, true);
+	}
+	let stroke = color === '#000000' ? '#FFFFFF' : '#000000';
+	return {fill:color,stroke};
+};
 
 //<%-------------------------------------- GANT TASK GRAPHIC ELEMENT --------------------------------------%>
 Ganttalendar.prototype.drawTask = function (task) {
@@ -438,17 +525,30 @@ Ganttalendar.prototype.drawTask = function (task) {
 				fill: "rgba(0,0,0,.4)"
 			});
 			if (dimensions.width > 50) {
-				var textStyle = {
-					fill: "#888",
+				let color = Ganttalendar.getTextColor(task);
+				let textStyle = {
+					fill: color.fill,
 					"font-size": "10px",
 					class: "textPerc teamworkIcons",
 					transform: "translate(5)"
 				};
-				if (task.progress > 100)
+				let backStyle = {
+					stroke: color.stroke+'C0',
+					strokeWidth:2,
+					"font-size": "10px",
+					class: "textPerc teamworkIcons",
+					transform: `translate(${color.stroke==='#FFFFFF' ? 5 : 6},${color.stroke==='#FFFFFF'?0:1})`
+				};
+				if (task.progress > 100) {
 					textStyle["font-weight"] = "bold";
-				if (task.progress > 90)
+					backStyle["font-weight"] = "bold";
+				}
+				if (task.progress > 90) {
 					textStyle.transform = "translate(-40)";
-				svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", textStyle);
+					backStyle.transform = "translate(-40)";
+				}
+				svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", backStyle);
+				let text=svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", textStyle);
 			}
 		}
 
