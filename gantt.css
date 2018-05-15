@@ -508,30 +508,7 @@ select.taskStatus {
 	stroke-linecap: "round";
 	stroke-dasharray: 2, 2;
 }
-.colorByStatus .taskStatusSVG[status=STATUS_ACTIVE] {
-	fill: #3BBF67;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_DONE] {
-	fill: #6EBEF4;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_FAILED] {
-	fill: #763A96;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_SUSPENDED] {
-	fill: #f9c154;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_UNDEFINED] {
-	fill: #dededf;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_UNDEFINED] .taskLayout {
-	stroke: #ccc;
-	stroke-width: 1;
-}
-.colorByStatus .taskStatusSVG[status=STATUS_DONE] .textPerc,
-.colorByStatus .taskStatusSVG[status=STATUS_ACTIVE] .textPerc,
-.colorByStatus .taskStatusSVG[status=STATUS_FAILED] .textPerc {
-	fill: #fff;
-}
+
 .deSVG.deSVGdrag {
 	cursor: move;
 }
