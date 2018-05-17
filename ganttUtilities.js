@@ -373,8 +373,15 @@ $.splittify = {
       }
     }
 
+    function calculatePerc(){
+      const leftWidth = $(first).find('.gdfTable').eq(0).outerWidth();
+      const fullWidth = $(first).closest('#TWGanttArea').innerWidth();
+      return leftWidth/fullWidth*100;
+    }
+
     function loadPosition () {
       //console.debug("loadPosition");
+      splitter.perc = calculatePerc();
       if (localStorage) {
         if (localStorage.getItem("TWPGanttSplitPos")) {
           splitter.perc=parseFloat(localStorage.getItem("TWPGanttSplitPos"));
