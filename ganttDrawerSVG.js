@@ -77,7 +77,9 @@ Ganttalendar.prototype.zoomGantt = function (isPlus) {
 Ganttalendar.prototype.getStoredZoomLevel = function () {
 	if (localStorage && localStorage.getObject("TWPGanttSavedZooms")) {
 		var savedZooms = localStorage.getObject("TWPGanttSavedZooms");
-		return savedZooms[this.master.tasks[0].id];
+		if(this.master.tasks.length) {
+			return savedZooms[this.master.tasks[0].id];
+		}
 	}
 	return false;
 };
