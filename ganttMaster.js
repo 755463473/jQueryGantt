@@ -44,7 +44,7 @@ function GanttMaster(templateFunctions = []) {
 	this.set100OnClose = false;
 	this.shrinkParent = false;
 
-	this.fillWithEmptyLines = true; //when is used by widget it could be usefull to do not fill with empty lines
+	this.fillWithEmptyLines = false; //when is used by widget it could be usefull to do not fill with empty lines
 
 	this.rowHeight = 30; // todo get it from css?
 	this.minRowsInEditor = 30; // number of rows always visible in editor
