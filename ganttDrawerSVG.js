@@ -77,7 +77,7 @@ Ganttalendar.prototype.zoomGantt = function (isPlus) {
 Ganttalendar.prototype.getStoredZoomLevel = function () {
 	if (localStorage && localStorage.getObject("TWPGanttSavedZooms")) {
 		var savedZooms = localStorage.getObject("TWPGanttSavedZooms");
-		if(this.master.tasks.length) {
+		if (this.master.tasks.length) {
 			return savedZooms[this.master.tasks[0].id];
 		}
 	}
@@ -214,7 +214,7 @@ Ganttalendar.prototype.createGanttGrid = function () {
 	return box;
 };
 
-Ganttalendar.invert=function invert(color, bw) {
+Ganttalendar.invert = function invert(color, bw) {
 	const BW_THRESHOLD = Math.sqrt(1.05 * 0.05) - 0.05;
 	const RE_HEX = /^(?:[0-9a-f]{3}){1,2}$/i;
 	const DEFAULT_BW_COLORS = {
@@ -299,7 +299,7 @@ Ganttalendar.getTextColor = function (task) {
 		color = Ganttalendar.invert(task.color, true);
 	}
 	let stroke = color === '#000000' ? '#FFFFFF' : '#000000';
-	return {fill:color,stroke};
+	return {fill: color, stroke};
 };
 
 //<%-------------------------------------- GANT TASK GRAPHIC ELEMENT --------------------------------------%>
@@ -491,9 +491,8 @@ Ganttalendar.prototype.drawTask = function (task) {
 	}
 	//ask for redraw link
 	self.redrawLinks();
-
 	//prof.stop();
-
+	self.redrawDeps();
 
 	function _createTaskSVG(task) {
 		var svg = self.svg;
@@ -535,11 +534,11 @@ Ganttalendar.prototype.drawTask = function (task) {
 					transform: "translate(5)"
 				};
 				let backStyle = {
-					stroke: color.stroke+'C0',
-					strokeWidth:2,
+					stroke: color.stroke + 'C0',
+					strokeWidth: 2,
 					"font-size": "10px",
 					class: "textPerc teamworkIcons",
-					transform: `translate(${color.stroke==='#FFFFFF' ? 5 : 6},${color.stroke==='#FFFFFF'?0:1})`
+					transform: `translate(${color.stroke === '#FFFFFF' ? 5 : 6},${color.stroke === '#FFFFFF' ? 0 : 1})`
 				};
 				if (task.progress > 100) {
 					textStyle["font-weight"] = "bold";
@@ -550,7 +549,7 @@ Ganttalendar.prototype.drawTask = function (task) {
 					backStyle.transform = "translate(-40)";
 				}
 				svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", backStyle);
-				let text=svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", textStyle);
+				let text = svg.text(taskSvg, (task.progress > 90 ? 100 : task.progress) + "%", (self.master.rowHeight - 5) / 2, (task.progress > 100 ? "!!! " : "") + task.progress + "%", textStyle);
 			}
 		}
 
@@ -756,9 +755,9 @@ Ganttalendar.prototype.drawLink = function (from, to, type) {
 		var p = svg.createPath();
 
 		//add the arrow
-		svg.image(group, 0, 0, 5, 10, self.master.resourceUrl + "linkArrow.png");
+		svg.image(group, 0, 0, 5, 10, self.master.resourceUrl + "depsArrow.png");
 		//create empty path
-		svg.path(group, p, {class: "taskLinkPathSVG"});
+		svg.path(group, p, {class: "taskDepsPathSVG"});
 
 		//set "from" and "to" to the group, bind "update" and trigger it
 		var jqGroup = $(group).data({from: from, to: to}).attr({
@@ -842,6 +841,34 @@ Ganttalendar.prototype.redrawLinks = function () {
 			self.drawLink(link.from, link.to);
 		}
 		//prof.stop();
+	});
+};
+
+
+Ganttalendar.prototype.redrawDeps = function () {
+	//console.debug("redrawLinks ");
+	var self = this;
+	this.element.stopTime("ganttlnksredr");
+	this.element.oneTime(10, "ganttlnksredr", function () {
+		$("#depsGroup").empty();
+		let collapsedDescendant = self.master.getCollapsedDescendant();
+		for (let i = 0; i < self.master.tasks.length; i++) {
+			let task = self.master.tasks[i];
+			console.log('collapsed', collapsedDescendant);
+			let children = task.getChildren();
+			console.log('childs', children);
+			for (let desc of children) {
+				if (collapsedDescendant.indexOf(desc) !== -1) {
+					continue;
+				}
+				let rowA = task.getRow();
+				let rowB = desc.getRow();
+				//if link is out of visible screen continue
+				if (Math.max(rowA, rowB) < self.master.firstVisibleTaskIndex || Math.min(rowA, rowB) > self.master.lastVisibleTaskIndex) continue;
+				self.drawLink(task, desc);
+			}
+
+		}
 	});
 };
 

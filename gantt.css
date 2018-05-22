@@ -482,6 +482,11 @@ select.taskStatus {
 	fill: none;
 	cursor: pointer;
 }
+.taskDepsPathSVG {
+	stroke: #ffcf7b;
+	stroke-width: 1px;
+	fill: none;
+}
 .ganttLinesSVG {
 	fill: transparent;
 	stroke-width: 1;
