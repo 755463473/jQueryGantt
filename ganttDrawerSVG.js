@@ -557,17 +557,35 @@ Ganttalendar.prototype.drawTask = function (task) {
 
 		if (task.isParent())
 			svg.rect(taskSvg, 0, 0, "100%", 3, {fill: "#000"});
-
-		if (task.startIsMilestone) {
-			svg.image(taskSvg, -9, dimensions.height / 2 - 9, 18, 18, self.master.resourceUrl + "milestone.png")
+		let offsetLeft = 20;
+		let children = task.getChildren();
+		if(children.length===0){
+			offsetLeft = 6;
 		}
-
+		let image;
+		let color = Ganttalendar.getTextColor(task);
+		if (task.type === 'project') {
+			image = svg.image(taskSvg, "100%", dimensions.height / 2 - 6, 14, 14, self.master.resourceUrl + "project.svg", {transform: `translate(${offsetLeft})`})
+		}
+		if (task.type==='milestone') {
+			image = svg.image(taskSvg, "100%", dimensions.height / 2 - 6, 14, 14, self.master.resourceUrl + "milestone.svg",{transform: `translate(${offsetLeft})`})
+		}
+		if (task.type === 'task') {
+			image = svg.image(taskSvg, "100%", dimensions.height / 2 - 6, 14, 14, self.master.resourceUrl + "task.svg", {transform: `translate(${offsetLeft})`})
+		}
+		/*
 		if (task.endIsMilestone) {
 			svg.image(taskSvg, "100%", dimensions.height / 2 - 9, 18, 18, self.master.resourceUrl + "milestone.png", {transform: "translate(-9)"})
 		}
+		*/
 
 		//task label
-		svg.text(taskSvg, "100%", 18, task.name, {class: "taskLabelSVG", transform: "translate(20,-5)"});
+		let text = svg.text(taskSvg, "100%", 18, task.name, {class: "taskLabelSVG", transform: `translate(${offsetLeft+18},-2)`});
+		$(image).parent().on('mouseenter',function(){
+			$(this).find('.taskLabelSVG').css('fill','#0000007A');
+		}).on('mouseleave',function(){
+			$(this).find('.taskLabelSVG').css('fill', '#00000000');
+		});
 
 		//link tool
 		if (task.level > 0) {
@@ -1023,6 +1041,7 @@ Ganttalendar.prototype.redrawDeps = function () {
 Ganttalendar.prototype.reset = function () {
 	//var prof= new Profiler("ganttDrawerSVG.reset");
 	this.element.find("[class*=linkGroup]").remove();
+	this.element.find("[class*=depsGroup]").remove();
 	this.element.find("[taskid]").remove();
 	//prof.stop()
 };
