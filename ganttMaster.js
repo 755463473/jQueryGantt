@@ -50,7 +50,7 @@ function GanttMaster(templateFunctions = []) {
 	this.minRowsInEditor = 30; // number of rows always visible in editor
 	this.numOfVisibleRows = 0; //number of visible rows in the editor
 	this.firstScreenLine = 0; //first visible row ignoring collapsed tasks
-	this.rowBufferSize = 5;
+	this.rowBufferSize = 5000;
 	this.firstVisibleTaskIndex = -1; //index of first task visible
 	this.lastVisibleTaskIndex = -1; //index of last task visible
 
