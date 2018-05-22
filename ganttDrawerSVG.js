@@ -201,6 +201,8 @@ Ganttalendar.prototype.createGanttGrid = function () {
 			//creates links group
 			self.linksGroup = svg.group("linksGroup");
 
+			self.depsGroup = svg.group("depsGroup");
+
 			//creates tasks group
 			self.tasksGroup = svg.group("tasksGroup");
 
@@ -755,9 +757,9 @@ Ganttalendar.prototype.drawLink = function (from, to, type) {
 		var p = svg.createPath();
 
 		//add the arrow
-		svg.image(group, 0, 0, 5, 10, self.master.resourceUrl + "depsArrow.png");
+		svg.image(group, 0, 0, 5, 10, self.master.resourceUrl + "linkArrow.png");
 		//create empty path
-		svg.path(group, p, {class: "taskDepsPathSVG"});
+		svg.path(group, p, {class: "linkPathSVG"});
 
 		//set "from" and "to" to the group, bind "update" and trigger it
 		var jqGroup = $(group).data({from: from, to: to}).attr({
@@ -808,8 +810,6 @@ Ganttalendar.prototype.drawLink = function (from, to, type) {
 
 		});
 	}
-
-
 };
 
 Ganttalendar.prototype.redrawLinks = function () {
@@ -845,6 +845,155 @@ Ganttalendar.prototype.redrawLinks = function () {
 };
 
 
+Ganttalendar.prototype.drawDepsLink = function (from, to, type) {
+	//console.debug("drawLink")
+	var self = this;
+	var peduncolusSize = 10;
+
+	/**
+	 * Given an item, extract its rendered position
+	 * width and height into a structure.
+	 */
+	function buildRectFromTask(task) {
+		var self = task.master.gantt;
+		var editorRow = task.rowElement;
+		var top = editorRow.position().top + editorRow.offsetParent().scrollTop();
+		var x = Math.round((task.start - self.startMillis) * self.fx);
+		var rect = {
+			left: x,
+			top: top + self.taskVertOffset,
+			width: Math.max(Math.round((task.end - task.start) * self.fx), 1),
+			height: self.taskHeight
+		};
+		return rect;
+	}
+
+	/**
+	 * The default rendering method, which paints a start to end dependency.
+	 */
+	function drawStartToEnd(from, to, ps) {
+		var svg = self.svg;
+
+		//this function update an existing link
+		function update() {
+			var group = $(this);
+			var from = group.data("from");
+			var to = group.data("to");
+
+			var rectFrom = buildRectFromTask(from);
+			var rectTo = buildRectFromTask(to);
+
+			var fx1 = rectFrom.left;
+			var fx2 = rectFrom.left + rectFrom.width;
+			var fy = rectFrom.height / 2 + rectFrom.top;
+
+			var tx1 = rectTo.left;
+			var tx2 = rectTo.left + rectTo.width;
+			var ty = rectTo.height / 2 + rectTo.top;
+
+
+			var tooClose = tx1 < fx2 + 2 * ps;
+			var r = 5; //radius
+			var arrowOffset = 5;
+			var up = fy > ty;
+			var fup = up ? -1 : 1;
+
+			var prev = fx2 + 2 * ps > tx1;
+			var fprev = prev ? -1 : 1;
+
+			var image = group.find("image");
+			var p = svg.createPath();
+
+			if (tooClose) {
+				var firstLine = fup * (rectFrom.height / 2 - 2 * r + 2);
+				p.move(fx2, fy)
+					.line(ps, 0, true)
+					.arc(r, r, 90, false, !up, r, fup * r, true)
+					.line(0, firstLine, true)
+					.arc(r, r, 90, false, !up, -r, fup * r, true)
+					.line(fprev * 2 * ps + (tx1 - fx2), 0, true)
+					.arc(r, r, 90, false, up, -r, fup * r, true)
+					.line(0, (Math.abs(ty - fy) - 4 * r - Math.abs(firstLine)) * fup - arrowOffset, true)
+					.arc(r, r, 90, false, up, r, fup * r, true)
+					.line(ps, 0, true);
+				image.attr({x: tx1 - 5, y: ty - 5 - arrowOffset});
+
+			} else {
+				p.move(fx2, fy)
+					.line((tx1 - fx2) / 2 - r, 0, true)
+					.arc(r, r, 90, false, !up, r, fup * r, true)
+					.line(0, ty - fy - fup * 2 * r + arrowOffset, true)
+					.arc(r, r, 90, false, up, r, fup * r, true)
+					.line((tx1 - fx2) / 2 - r, 0, true);
+				image.attr({x: tx1 - 5, y: ty - 5 + arrowOffset});
+			}
+
+			group.find("path").attr({d: p.path()});
+		}
+
+
+		// create the group
+		var group = svg.group(self.depsGroup, "" + from.id + "-" + to.id);
+		svg.title(group, from.name + " -> " + to.name);
+
+		var p = svg.createPath();
+
+		//add the arrow
+		svg.image(group, 0, 0, 5, 10, self.master.resourceUrl + "depsArrow.png");
+		//create empty path
+		svg.path(group, p, {class: "taskDepsPathSVG"});
+
+		//set "from" and "to" to the group, bind "update" and trigger it
+		var jqGroup = $(group).data({from: from, to: to}).attr({
+			from: from.id,
+			to: to.id
+		}).on("update", update).trigger("update");
+
+		if (self.showCriticalPath && from.isCritical && to.isCritical)
+			jqGroup.addClass("critical");
+
+		jqGroup.addClass("depsGroup");
+		return jqGroup;
+	}
+
+
+	/**
+	 * A rendering method which paints a start to start dependency.
+	 */
+	function drawStartToStart(from, to) {
+		console.error("StartToStart not supported on SVG");
+		var rectFrom = buildRectFromTask(from);
+		var rectTo = buildRectFromTask(to);
+	}
+
+	var link;
+	// Dispatch to the correct renderer
+	if (type == 'start-to-start') {
+		link = drawStartToStart(from, to, peduncolusSize);
+	} else {
+		link = drawStartToEnd(from, to, peduncolusSize);
+	}
+
+	// in order to create a dependency you will need permissions on both tasks
+	if (this.master.permissions.canWrite || (from.canWrite && to.canWrite)) {
+		link.click(function (e) {
+			var el = $(this);
+			e.stopPropagation();// to avoid body remove focused
+			self.element.find("[class*=focused]").removeClass("focused");
+			$(".ganttSVGBox .focused").removeClass("focused");
+			var el = $(this);
+			if (!self.resDrop)
+				el.addClass("focused");
+			self.resDrop = false; //hack to avoid select
+
+			$("body").off("click.focused").one("click.focused", function () {
+				$(".ganttSVGBox .focused").removeClass("focused");
+			})
+
+		});
+	}
+};
+
 Ganttalendar.prototype.redrawDeps = function () {
 	//console.debug("redrawLinks ");
 	var self = this;
@@ -854,9 +1003,7 @@ Ganttalendar.prototype.redrawDeps = function () {
 		let collapsedDescendant = self.master.getCollapsedDescendant();
 		for (let i = 0; i < self.master.tasks.length; i++) {
 			let task = self.master.tasks[i];
-			console.log('collapsed', collapsedDescendant);
 			let children = task.getChildren();
-			console.log('childs', children);
 			for (let desc of children) {
 				if (collapsedDescendant.indexOf(desc) !== -1) {
 					continue;
@@ -865,7 +1012,7 @@ Ganttalendar.prototype.redrawDeps = function () {
 				let rowB = desc.getRow();
 				//if link is out of visible screen continue
 				if (Math.max(rowA, rowB) < self.master.firstVisibleTaskIndex || Math.min(rowA, rowB) > self.master.lastVisibleTaskIndex) continue;
-				self.drawLink(task, desc);
+				self.drawDepsLink(task, desc);
 			}
 
 		}
