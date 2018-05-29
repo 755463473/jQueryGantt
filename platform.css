@@ -22,7 +22,7 @@ body styles
 -------------------------------------------------------
 */
 
-#savingMessage {
+.TWGanttWorkSpace #savingMessage {
   background-color: #E3EDED;
   display: none;
   color: #617777;
@@ -40,8 +40,7 @@ body styles
   -webkit-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.4);
   -o-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.4);
 }
-
-.waiting {
+.TWGanttWorkSpace .waiting {
   cursor: progress;
 }
 
@@ -51,7 +50,7 @@ teamwork icon
 -------------------------------------------------------
 */
 
-.teamworkIcon {
+.TWGanttWorkSpace .teamworkIcon {
   font-family: 'TeamworkRegular' !important;
   color: #34495e;
   font-weight: normal;
@@ -62,28 +61,22 @@ teamwork icon
   -moz-font-smoothing: antialiased;
 
 }
-
-.teamworkIcon:hover {
+.TWGanttWorkSpace .teamworkIcon:hover {
   opacity: .8
 }
-
-.teamworkIcon.withLabel {
+.TWGanttWorkSpace .teamworkIcon.withLabel {
   padding-right: 5px;
 }
-
-.button:hover .teamworkIcon {
+.TWGanttWorkSpace .button:hover .teamworkIcon {
   opacity: 0.8
 }
-
-.teamworkIcon.alert {
+.TWGanttWorkSpace .teamworkIcon.alert {
   color: #B61E2D;
 }
-
-.del {
+.TWGanttWorkSpace .del {
   color: #ff7271
 }
-
-.cvcColorSquare {
+.TWGanttWorkSpace .cvcColorSquare {
   display: inline-block;
   text-align: left;
   border: #fff 0px solid;
@@ -95,91 +88,78 @@ teamwork icon
   border-radius: 5px;
   cursor: pointer;
 }
-
-.cvcColorSquare:hover {
+.TWGanttWorkSpace .cvcColorSquare:hover {
   opacity: .7;
 }
-
-.unselectable {
+.TWGanttWorkSpace .unselectable {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
 }
-
-.ui-resizable {
+.TWGanttWorkSpace .ui-resizable {
   position: relative;
 }
-
-.ui-resizable-handle {
+.TWGanttWorkSpace .ui-resizable-handle {
   position: absolute;
   font-size: 0.1px;
   z-index: 99999;
   display: block;
 }
-
-.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle {
+.TWGanttWorkSpace .ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle {
   display: none;
 }
-
-.ui-resizable-n {
+.TWGanttWorkSpace .ui-resizable-n {
   cursor: n-resize;
   height: 7px;
   width: 100%;
   top: -5px;
   left: 0;
 }
-
-.ui-resizable-s {
+.TWGanttWorkSpace .ui-resizable-s {
   cursor: s-resize;
   height: 7px;
   width: 100%;
   bottom: -5px;
   left: 0;
 }
-
-.ui-resizable-e {
+.TWGanttWorkSpace .ui-resizable-e {
   cursor: e-resize;
   width: 7px;
   right: -5px;
   top: 0;
   height: 100%;
 }
-
-.ui-resizable-w {
+.TWGanttWorkSpace .ui-resizable-w {
   cursor: w-resize;
   width: 7px;
   left: -5px;
   top: 0;
   height: 100%;
 }
-
-.ui-resizable-se {
+.TWGanttWorkSpace .ui-resizable-se {
   cursor: se-resize;
   width: 12px;
   height: 12px;
   right: 1px;
   bottom: 1px;
 }
-
-.ui-resizable-sw {
+.TWGanttWorkSpace .ui-resizable-sw {
   cursor: sw-resize;
   width: 9px;
   height: 9px;
   left: -5px;
   bottom: -5px;
 }
-
-.ui-resizable-nw {
+.TWGanttWorkSpace .ui-resizable-nw {
   cursor: nw-resize;
   width: 9px;
   height: 9px;
   left: -5px;
   top: -5px;
 }
-
-.ui-resizable-ne {
+.TWGanttWorkSpace .ui-resizable-ne {
   cursor: ne-resize;
   width: 9px;
   height: 9px;
