@@ -1,8 +1,4 @@
-
-body {
-	/*overflow: hidden;*/
-}
-.TWGanttWorkSpace.ganttFullScreen {
+.TWGanttWorkSpace .ganttFullScreen {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -16,43 +12,43 @@ body {
 	overflow: visible !important;
 }
 /* -------------------------------------- GRIDIFY -----------------------------------*/
-.gdfTable {
+.TWGanttWorkSpace .gdfTable {
 	table-layout: fixed;
 	border-collapse: separate;
 	border-spacing: 0;
 	background-color: #fff;
 }
-.gdfTable td, .gdfTable th {
+.TWGanttWorkSpace .gdfTable td, .gdfTable th {
 	vertical-align: middle;
 	overflow: hidden;
 	text-overflow: clip;
 	white-space: nowrap;
 	font-size: 14px
 }
-.gdfCell {
+.TWGanttWorkSpace .gdfCell {
 	overflow: hidden;
 	padding: 4px 2px;
 	border-bottom: 1px solid #eee;
 	border-right: 1px solid #eee;
 	font-family: arial, helvetica, sans-serif;
 }
-.gdfCell.noClip {
+.TWGanttWorkSpace .gdfCell.noClip {
 	overflow: visible;
 }
-.gdfColHeader {
+.TWGanttWorkSpace .gdfColHeader {
 	min-width: 5px;
 	height: 30px;
 	background-color: #eee;
 	border-bottom: 2px solid #bbb;
-	border-right: 1px solid #bbb;
+	border-right: 1px solid #bbb !important;
 }
-.gdfColHeader:last-of-type {
+.TWGanttWorkSpace .gdfColHeader:last-of-type {
 	border-right: none;
 }
-.gdfCell:last-of-type {
+.TWGanttWorkSpace .gdfCell:last-of-type {
 	border-right: none;
 }
-.gdfCellInput {
+.TWGanttWorkSpace .gdfCellInput {
 	border: 0 none;
 	font-size: 12px;
 	height: 20px;
@@ -61,7 +57,7 @@ body {
 	width: 100%;
 	background-color: #d4fbe8;
 }
-.gdfCellWrap {
+.TWGanttWorkSpace .gdfCellWrap {
 	border: 0 none;
 	font-size: 12px;
 	height: 17px;
@@ -72,78 +68,79 @@ body {
 
 	background-color: #ffcccc;
 }
-.gdfHResizing {
+.TWGanttWorkSpace .gdfHResizing {
 	cursor: w-resize;
 }
 /* -------------------------------------- SPLITTER -----------------------------------*/
-.splitterContainer {
+.TWGanttWorkSpace .splitterContainer {
 	width: 100%;
 	height: 100%;
 }
-.splitBox1 {
+.TWGanttWorkSpace .splitBox1 {
 	overflow-x: scroll;
 	overflow-y: hidden;
 }
-.splitBox2 {
+.TWGanttWorkSpace .splitBox2 {
 	overflow-x: scroll;
 	overflow-y: auto;
 }
-.splitElement {
+.TWGanttWorkSpace .splitElement {
 	outline-style: none;
 	position: absolute;
 	height: 100%;
 	background-color: #f3f3f3;
 }
-.vSplitBar {
+.TWGanttWorkSpace .vSplitBar {
 	position: relative;
 	width: 5px;
-	/*background-color: rgba(170, 170, 170, .2);*/
-	cursor: ew-resize;
+	cursor: ew-resize !important;
 	text-align: center;
 	color: white;
 	box-shadow: 0 0 3px rgba(0, 0, 0, .4);
 	background: rgba(170, 170, 170, .2) url("res/ganttSplitterGrip.png") no-repeat center center;
 	z-index: 5;
 }
-.unselectable .vSplitBar, .vSplitBar:hover {
+.TWGanttWorkSpace .unselectable .vSplitBar,
+.TWGanttWorkSpace .vSplitBar:hover {
 	background-color: rgba(170, 170, 170, .5);
 	box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 
 }
-.vSplitBar .toLeft, .vSplitBar .toRight, .vSplitBar .toCenter {
+.TWGanttWorkSpace .vSplitBar .toLeft,
+.TWGanttWorkSpace .vSplitBar .toRight,
+.TWGanttWorkSpace .vSplitBar .toCenter {
 	font-family: icons, TeamworkRegular;
 	cursor: pointer;
 	position: absolute;
 	top: 0;
 	margin-top: 0;
-	/*background-color: rgba(170, 170, 170, .2);*/
-	/*background-color: rgba(0, 126, 221, 0.3);*/
 	background-color: rgba(47, 170, 201, 0.3);
 	z-index: 2;
 	font-size: 10px;
 	width: 15px;
-	/*box-shadow: 0 0 1px rgba(0, 0, 0, .5);*/
 }
-.unselectable .vSplitBar .toLeft, .unselectable .vSplitBar .toCenter, .unselectable .vSplitBar .toRight, .vSplitBar:hover .toLeft, .vSplitBar:hover .toRight, .vSplitBar:hover .toCenter {
-	/*background-color: rgba(170, 170, 170, 1);*/
-	/*background-color: rgba(0, 126, 221, 1);*/
+.TWGanttWorkSpace .unselectable .vSplitBar .toLeft,
+.TWGanttWorkSpace .unselectable .vSplitBar .toCenter,
+.TWGanttWorkSpace .unselectable .vSplitBar .toRight,
+.TWGanttWorkSpace .vSplitBar:hover .toLeft,
+.TWGanttWorkSpace .vSplitBar:hover .toRight,
+.TWGanttWorkSpace .vSplitBar:hover .toCenter {
 	background-color: rgba(47, 170, 201, 1);
-
 	box-shadow: 0 0 1px rgba(0, 0, 0, .4);
 }
-.vSplitBar .toLeft {
+.TWGanttWorkSpace .vSplitBar .toLeft {
 	left: -19px;
 	text-align: left;
 }
-.vSplitBar .toCenter {
+.TWGanttWorkSpace .vSplitBar .toCenter {
 	left: -4px;
 	text-align: center;
 }
-.vSplitBar .toRight {
+.TWGanttWorkSpace .vSplitBar .toRight {
 	left: 10px;
 	text-align: right;
 }
-.ganttFixHead {
+.TWGanttWorkSpace .ganttFixHead {
 	position: absolute;
 	z-index: 2;
 	top: 0;
@@ -151,19 +148,19 @@ body {
 }
 /* -------------------------------------- GANTT -----------------------------------*/
 
-.ganttTable {
+.TWGanttWorkSpace .ganttTable {
 	table-layout: fixed;
 	background-color: #ffffff;
 }
-.ganttTable td, .ganttTable th {
+.TWGanttWorkSpace .ganttTable td, .TWGanttWorkSpace .ganttTable th {
 	overflow: hidden;
 	text-overflow: clip;
 	white-space: nowrap;
 }
-.ganttHead1, .ganttHead2 {
+.TWGanttWorkSpace .ganttHead1, .TWGanttWorkSpace .ganttHead2 {
 	height: 20px;
 }
-.ganttHead1 th {
+.TWGanttWorkSpace .ganttHead1 th {
 	border-left: 1px solid #b0b0b0;
 	padding: 0;
 	margin: 0;
@@ -173,12 +170,12 @@ body {
 	white-space: pre-line;
 	word-break: break-all;
 }
-.ganttHead1 th,
-.ganttHead2 th {
+.TWGanttWorkSpace .ganttHead1 th,
+.TWGanttWorkSpace .ganttHead2 th {
 	white-space: nowrap;
 	overflow: hidden;
 }
-.ganttHead2 th {
+.TWGanttWorkSpace .ganttHead2 th {
 	padding: 0;
 	margin: 0;
 	border-left: 1px solid #b0b0b0;
@@ -186,111 +183,113 @@ body {
 	border-bottom: 2px solid #bbb;
 	background: #EEEEEE;
 }
-.ganttHead1 th.headSmall, .ganttHead2 th.headSmall {
+.TWGanttWorkSpace .ganttHead1 th.headSmall,
+.TWGanttWorkSpace .ganttHead2 th.headSmall {
 	font-size: 10px;
 }
-.ganttHead1 th.headLeft, .ganttHead2 th.headLeft {
+.TWGanttWorkSpace .ganttHead1 th.headLeft,
+.TWGanttWorkSpace .ganttHead2 th.headLeft {
 	text-align: left;
 }
-.ganttToday {
+.TWGanttWorkSpace .ganttToday {
 	position: absolute;
 	top: 0;
 	width: 1px;
 	height: 100%;
 	border-left: 2px dotted #13AFA5;
 }
-.ganttTitle img {
+.TWGanttWorkSpace .ganttTitle img {
 	max-width: 150px;
 }
-.ganttButtonBar {
+.TWGanttWorkSpace .ganttButtonBar {
 	position: relative;
 	z-index: 2;
 	/*background-color: #fff;*/
 	border-bottom: 1px solid #959595;
 	padding: 5px 0 5px 10px;
 }
-.dataTable .ganttButtonBar {
+.TWGanttWorkSpace .dataTable .ganttButtonBar {
 	border-bottom: none;
 }
-.ganttButtonBar .buttons {
+.TWGanttWorkSpace .ganttButtonBar .buttons {
 	position: relative;
 	display: inline-block;
 	width: 100%;
 	margin-top: 0;
 	height: 45px;
 }
-.dataTable .ganttButtonBar .buttons {
+.TWGanttWorkSpace .dataTable .ganttButtonBar .buttons {
 	display: inline-block;
 	width: 100%;
 }
-.ganttButtonBar .buttons button {
+.TWGanttWorkSpace .ganttButtonBar .buttons button {
 	vertical-align: middle;
 	margin: 0;
 	outline: none;
 }
-.ganttButtonBar .buttons .button.textual.icon {
+.TWGanttWorkSpace .ganttButtonBar .buttons .button.textual.icon {
 	height: 45px;
 }
-.button span.teamworkIcon {
+.TWGanttWorkSpace .button span.teamworkIcon {
 	text-indent: -10px;
 }
-.button.textual span.teamworkIcon {
+.TWGanttWorkSpace .button.textual span.teamworkIcon {
 	font-size: 140%
 }
-#saveGanttButton {
+.TWGanttWorkSpace #saveGanttButton {
 	margin-left: 20px;
 	padding: 5px 12px;
 	margin-bottom: 0;
 	vertical-align: middle;
 }
-.ganttButtonSeparator {
+.TWGanttWorkSpace .ganttButtonSeparator {
 	border-left: 1px solid #dadada;
 	margin: 0 10px;
 	font-size: 130%;
 	vertical-align: middle;
 }
-.ganttLines {
+.TWGanttWorkSpace .ganttLines {
 	position: absolute;
 	width: 100%;
 	height: 1px;
 	border-top: 1px solid #eee;
 	z-index: 1;
 }
-.ganttLinks {
+.TWGanttWorkSpace .ganttLinks {
 	z-index: 10;
 }
-.ganttTable td.end {
+.TWGanttWorkSpace .ganttTable td.end {
 	border-right: 2px dotted #ddd;
 }
-.ganttHead2 th.holy {
+.TWGanttWorkSpace .ganttHead2 th.holy {
 	background-color: rgba(236, 195, 176, 0.40);
 }
-.ganttBodyCell.holy {
+.TWGanttWorkSpace .ganttBodyCell.holy {
 	background-color: rgba(255, 245, 230, 0.51);
 }
 /* -------------------------------------- TASK -----------------------------------*/
 
-.taskBoxDiv {
+.TWGanttWorkSpace .taskBoxDiv {
 	position: absolute;
 	height: 25px;
 	margin-top: 3px;
 	z-index: 100;
 }
-.taskBoxDiv .layout {
+.TWGanttWorkSpace .taskBoxDiv .layout {
 	height: 100%;
 	color: #DB2727;
 	border-radius: 2px;
 	background: #eee; /* Old browsers */
 	border: 1px solid #bbb;
 }
-.taskBoxDiv .taskStatus {
+.TWGanttWorkSpace .taskBoxDiv .taskStatus {
 	left: 5px;
 	top: 10px;
 	position: absolute;
 	width: 10px;
 	height: 10px;
 }
-.taskBoxDiv .layout .milestone {
+.TWGanttWorkSpace .taskBoxDiv .layout .milestone {
 	top: 0;
 	position: absolute;
 	width: 18px;
@@ -298,23 +297,23 @@ body {
 	height: 18px;
 	display: none;
 }
-.taskBoxDiv .layout .milestone.end {
+.TWGanttWorkSpace .taskBoxDiv .layout .milestone.end {
 	right: 0;
 }
-.taskBoxDiv .layout .milestone.active {
+.TWGanttWorkSpace .taskBoxDiv .layout .milestone.active {
 	display: block;
 }
-.taskBoxDiv.hasChild .layout {
+.TWGanttWorkSpace .taskBoxDiv.hasChild .layout {
 	border-top: 2px solid black;
 }
-.taskBoxDiv .taskProgress {
+.TWGanttWorkSpace .taskBoxDiv .taskProgress {
 	height: 5px;
 	position: absolute;
 }
-.taskBoxDiv .layout.extDep {
+.TWGanttWorkSpace .taskBoxDiv .layout.extDep {
 	background-image: url(res/hasExternalDeps.png);
 }
-.taskLabel {
+.TWGanttWorkSpace .taskLabel {
 	position: absolute;
 	height: 28px;
 	color: black;
@@ -325,15 +324,15 @@ body {
 	width: 195px;
 	white-space: nowrap;
 }
-.taskDepLine {
+.TWGanttWorkSpace .taskDepLine {
 	border: 1px solid #9999ff;
 	overflow: hidden;
 	position: absolute;
 }
-.taskEditRow, .emptyRow {
+.TWGanttWorkSpace .taskEditRow, .emptyRow {
 	height: 30px;
 }
-.taskEditRow input, .columnWidthTest {
+.TWGanttWorkSpace .taskEditRow input, .columnWidthTest {
 	border: 0 none;
 	font-size: 14px;
 	height: 20px;
@@ -344,33 +343,33 @@ body {
 	border-radius: 0;
 	vertical-align: text-bottom;
 }
-.taskEditRow input[type=checkbox] {
+.TWGanttWorkSpace .taskEditRow input[type=checkbox] {
 	transform: scale(.7);
 	width: 15px;
 	height: 15px;
 }
-.columnWidthTest {
+.TWGanttWorkSpace .columnWidthTest {
 	width: auto;
 }
-.taskEditRow input:focus {
+.TWGanttWorkSpace .taskEditRow input:focus {
 	font-weight: bold;
 }
-.taskEditRow input {
+.TWGanttWorkSpace .taskEditRow input {
 	background-color: transparent;
 }
-.taskEditRow.rowSelected td {
+.TWGanttWorkSpace .taskEditRow.rowSelected td {
 	background-color: rgb(234, 248, 255);
 }
-.isGanttList .taskEditRow:nth-child(odd), .assigEditRow:nth-child(odd) {
+.TWGanttWorkSpace .isGanttList .taskEditRow:nth-child(odd), .TWGanttWorkSpace .assigEditRow:nth-child(odd) {
 	background-color: #ffffff;
 }
-.isGanttList .taskEditRow:nth-child(even), .assigEditRow:nth-child(even) {
+.TWGanttWorkSpace .isGanttList .taskEditRow:nth-child(even), .TWGanttWorkSpace .assigEditRow:nth-child(even) {
 	background-color: #ffffff;
 }
-input[readonly] {
+.TWGanttWorkSpace input[readonly] {
 	color: #c0c0c0;
 }
-.taskStatusBox {
+.TWGanttWorkSpace .taskStatusBox {
 	position: absolute;
 	/*width:100px;*/
 	height: 26px;
@@ -381,7 +380,7 @@ input[readonly] {
 	padding: 4px;
 	z-index: 100;
 }
-.taskStatus {
+.TWGanttWorkSpace .taskStatus {
 	width: 15px;
 	height: 15px;
 	display: inline-block;
@@ -392,52 +391,52 @@ input[readonly] {
 	border: 0;
 	cursor: pointer;
 }
-.taskStatus[status=STATUS_ACTIVE] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_ACTIVE] {
 	background-color: #3BBF67;
 	color: #fff;
 }
-.taskStatus[status=STATUS_DONE] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_DONE] {
 	background-color: #6EBEF4;
 	color: #000;
 }
-.taskStatus[status=STATUS_FAILED] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_FAILED] {
 	background-color: #763A96;
 	color: #fff;
 }
-.taskStatus[status=STATUS_SUSPENDED] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_SUSPENDED] {
 	background-color: #F9C154;
 	color: #000;
 }
-.taskStatus[status=STATUS_WAITING] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_WAITING] {
 	background-color: rgb(247, 145, 54);
 	color: #000;
 }
-.taskStatus[status=STATUS_UNDEFINED] {
+.TWGanttWorkSpace .taskStatus[status=STATUS_UNDEFINED] {
 	background-color: #dededf;
 	color: #000;
 }
-.taskStatus.selected {
+.TWGanttWorkSpace .taskStatus.selected {
 	border: #666 2px solid;
 }
-select.taskStatus {
+.TWGanttWorkSpace select.taskStatus {
 	width: auto;
 	height: auto;
 	border-radius: 2px;
 }
-.assigsTableWrapper {
+.TWGanttWorkSpace .assigsTableWrapper {
 	position: relative;
 	height: 150px;
 	overflow: auto;
 	margin-top: -20px;
 }
-.unselectable {
+.TWGanttWorkSpace .unselectable {
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
 }
-.exp-controller {
+.TWGanttWorkSpace .exp-controller {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
@@ -445,24 +444,24 @@ select.taskStatus {
 	top: 2px;
 	margin-left: -18px;
 }
-.isParent .exp-controller {
+.TWGanttWorkSpace .isParent .exp-controller {
 	background-image: url(res/toggle_collapse.png);
 }
-.isParent.collapsed .exp-controller {
+.TWGanttWorkSpace .isParent.collapsed .exp-controller {
 	cursor: pointer;
 	background-image: url(res/toggle-expand.png);
 }
-.ui-resizable-helper {
+.TWGanttWorkSpace .ui-resizable-helper {
 	border: 1px dotted #00F;
 }
-.ui-resizable-e, .ui-resizable-w {
+.TWGanttWorkSpace .ui-resizable-e, .TWGanttWorkSpace .ui-resizable-w {
 	width: 5px;
 }
-.ui-draggable {
-	cursor: move;
+.TWGanttWorkSpace .ui-draggable {
+	cursor: move !important;
 }
 /*--------------------------------------------------- SVG --------------------------------------------------*/
-.ganttSVGBox {
+.TWGanttWorkSpace .ganttSVGBox {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -471,104 +470,103 @@ select.taskStatus {
 	width: 100%;
 	overflow-y: hidden; /*IE11 bug*/
 }
-.taskBoxSVG {
+.TWGanttWorkSpace .taskBoxSVG {
 	overflow: visible;
 }
-.taskBoxSVG .taskLayout {
+.TWGanttWorkSpace .taskBoxSVG .taskLayout {
 	stroke-width: 0;
 	stroke: #999;
 }
-.taskLinkPathSVG {
+.TWGanttWorkSpace .taskLinkPathSVG {
 	stroke: rgba(47, 151, 198, 1);
 	/*stroke:#9999ff;*/
 	stroke-width: 2.5px;
 	fill: none;
 	cursor: pointer;
 }
-.taskDepsPathSVG {
+.TWGanttWorkSpace .taskDepsPathSVG {
 	stroke: #ffcf7b;
 	stroke-width: 1px;
 	fill: none;
 }
-.ganttLinesSVG {
+.TWGanttWorkSpace .ganttLinesSVG {
 	fill: transparent;
 	stroke-width: 1;
 	stroke: #eee;
 }
-.isGanttList .ganttLinesSVG:nth-child(even) {
+.TWGanttWorkSpace .isGanttList .ganttLinesSVG:nth-child(even) {
 	fill: transparent;
 	stroke-width: 1;
 	stroke: #fff;
 
 }
-.isGanttList .ganttLinesSVG:nth-child(odd) {
+.TWGanttWorkSpace .isGanttList .ganttLinesSVG:nth-child(odd) {
 	fill: transparent;
 	stroke-width: 1;
 	stroke: #eee;
 }
-.ganttLinesSVG.rowSelected {
+.TWGanttWorkSpace .ganttLinesSVG.rowSelected {
 	fill: rgb(234, 248, 255) !important;
 	/*fill: rgba(255, 255, 153, 0.50) !important;*/
 }
-.ganttTodaySVG {
+.TWGanttWorkSpace .ganttTodaySVG {
 	stroke-width: 2px;
 	stroke: #e06671;
 	stroke-linecap: "round";
 	stroke-dasharray: 2, 2;
 }
-
-.deSVG.deSVGdrag {
+.TWGanttWorkSpace .deSVG.deSVGdrag {
 	cursor: move;
 }
-.deSVG.deSVGhand {
+.TWGanttWorkSpace .deSVG.deSVGhand {
 	cursor: ew-resize;
 }
-.linkHandleSVG {
+.TWGanttWorkSpace .linkHandleSVG {
 	display: none;
 	stroke: transparent;
 	stroke-width: 5;
 	fill: rgba(47, 151, 198, 0.7);
 	cursor: pointer;
 }
-.linkLineSVG {
+.TWGanttWorkSpace .linkLineSVG {
 	stroke-width: 5px;
 	stroke: rgba(47, 151, 198, 0.7);
 	stroke-linecap: "round";
 	opacity: .5;
 }
-.linkOnProgress .deSVG.taskBoxSVG {
+.TWGanttWorkSpace .linkOnProgress .deSVG.taskBoxSVG {
 	cursor: cell;
 }
-.taskBoxSVG.linkOver .taskLayout {
+.TWGanttWorkSpace .taskBoxSVG.linkOver .taskLayout {
 	stroke-width: 1px;
 	stroke: rgba(47, 151, 198, 0.7);
 	opacity: 1;
 }
-.taskLabelSVG {
+.TWGanttWorkSpace .taskLabelSVG {
 	stroke: none;
 	fill: #00000000;
 	font-size: 12px;
 }
-.critical .taskLinkPathSVG {
+.TWGanttWorkSpace .critical .taskLinkPathSVG {
 	stroke: red;
 }
-.taskBoxSVG.critical .taskLayout {
+.TWGanttWorkSpace .taskBoxSVG.critical .taskLayout {
 	stroke: red;
 }
-.focused .taskLinkPathSVG {
+.TWGanttWorkSpace .focused .taskLinkPathSVG {
 	stroke-width: 5px;
 	stroke: rgba(47, 151, 198, 0.7);
 }
-.taskBoxSVG.focused .taskLayout {
+.TWGanttWorkSpace .taskBoxSVG.focused .taskLayout {
 	stroke-width: 3px;
 	stroke: rgba(47, 151, 198, 0.7);
 }
-.taskBoxSVG.critical .taskLayout {
+.TWGanttWorkSpace .taskBoxSVG.critical .taskLayout {
 	stroke-width: 3px;
 	stroke: rgba(255, 0, 0, 0.7);
 }
 /*--------------------------------------------------- RESOURCE ADD  --------------------------------------------------*/
-.ganttAddResource {
+.TWGanttWorkSpace .ganttAddResource {
 	position: absolute;
 	width: 660px;
 	height: 300px;
@@ -580,16 +578,16 @@ select.taskStatus {
 	z-index: 200;
 	padding: 10px;
 }
-.ganttAddResource tr.isCompany {
+.TWGanttWorkSpace .ganttAddResource tr.isCompany {
 	display: none;
 }
-.ganttAddResource.isCompany tr.isCompany {
+.TWGanttWorkSpace .ganttAddResource.isCompany tr.isCompany {
 	display: table-row;
 }
-.ganttAddResource.isCompany tr.isPerson {
+.TWGanttWorkSpace .ganttAddResource.isCompany tr.isPerson {
 	display: none;
 }
-.ganttAddResourceBG {
+.TWGanttWorkSpace .ganttAddResourceBG {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -599,13 +597,13 @@ select.taskStatus {
 	z-index: 200;
 }
 /*---------------------------------#LOG_CHANGES_CONTAINER --------------------------------------------*/
-#LOG_CHANGES_CONTAINER {
+.TWGanttWorkSpace #LOG_CHANGES_CONTAINER {
 	display: none;
 	width: 300px;
 	top: -130px;
 	margin-left: -35px
 }
-.userProfile {
+.TWGanttWorkSpace .userProfile {
 	font-size: 16px;
 	vertical-align: middle;
 	text-align: right;
@@ -619,7 +617,7 @@ select.taskStatus {
 	position: absolute;
 	right: 0;
 }
-.userLine {
+.TWGanttWorkSpace .userLine {
 	max-width: 150px;
 	display: inline-block;
 	text-overflow: ellipsis;
@@ -629,7 +627,7 @@ select.taskStatus {
 	padding: 0;
 	vertical-align: middle;
 }
-.avatar {
+.TWGanttWorkSpace .avatar {
 	vertical-align: middle;
 	padding: 1px;
 	width: 27px;
@@ -642,42 +640,42 @@ select.taskStatus {
 
 @media only screen and (max-width: 1260px) {
 
-	.ganttButtonBar .button span.teamworkIcon {
+	.TWGanttWorkSpace .ganttButtonBar .button span.teamworkIcon {
 		font-size: 130%;
 	}
-	.userLine {
+	.TWGanttWorkSpace .userLine {
 		display: none;
 	}
 
 }
 @media only screen and (min-width: 1261px) and (max-width: 1320px) {
 
-	.ganttButtonBar .button span.teamworkIcon {
+	.TWGanttWorkSpace .ganttButtonBar .button span.teamworkIcon {
 		font-size: 130%;
 	}
-	.button {
+	.TWGanttWorkSpace .button {
 		font-size: 100%;
 		padding: 3px 9px 6px;
 		margin-right: 5px;
 		margin-bottom: 5px
 	}
-	.userLine {
+	.TWGanttWorkSpace .userLine {
 		display: none;
 	}
 
 }
 @media only screen and (max-width: 1160px) {
 
-	.userProfile {
+	.TWGanttWorkSpace .userProfile {
 		float: none;
 		position: absolute;
 		top: 0;
 		right: 10px;
 	}
-	.userProfile .teamworkIcon {
+	.TWGanttWorkSpace .userProfile .teamworkIcon {
 		color: rgb(255, 255, 255);
 	}
-	.userProfile .ganttButtonSeparator, .userProfile .avatar {
+	.TWGanttWorkSpace .userProfile .ganttButtonSeparator, .TWGanttWorkSpace .userProfile .avatar {
 		border-color: rgb(127, 154, 170);
 	}
 
@@ -685,36 +683,36 @@ select.taskStatus {
 /* Ipad */
 
 @media only screen and  (min-width: 768px) and (max-width: 1024px) {
-	.ganttButtonSeparator {
+	.TWGanttWorkSpace .ganttButtonSeparator {
 		margin-left: 2px;
 		padding-right: 6px;
 		font-size: 100%;
 	}
-	.button {
+	.TWGanttWorkSpace .button {
 		padding: 5px 6px 6px;
 	}
 }
 /* Mobile TODO */
 
 @media only screen and (max-width: 767px) {
-	.button {
+	.TWGanttWorkSpace .button {
 		font-size: 50%;
 	}
 }
-th.gdfColHeader {
+.TWGanttWorkSpace th.gdfColHeader {
 	padding: 0px !important;
 	vertical-align: middle !important;
 	text-align: center !important;
 }
-.gdfColHeader.max {
+.TWGanttWorkSpace .gdfColHeader.max {
 	max-width: 35px !important;
 }
-.gdfColHeader.max2 {
+.TWGanttWorkSpace .gdfColHeader.max2 {
 	max-width: 25px !important;
 }
-.gdfCell input[disabled] {
+.TWGanttWorkSpace .gdfCell input[disabled] {
 	color: #222;
 }
-.gdfCell {
+.TWGanttWorkSpace .gdfCell {
 	line-height: 1;
 }
