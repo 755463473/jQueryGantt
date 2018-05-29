@@ -21,60 +21,6 @@
 body styles
 -------------------------------------------------------
 */
-BODY, TBODY {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  /*font-family: 'Open Sans', sans-serif;*/
-  font-size: 14px;
-  margin: 0;
-  color: #1e2f41;
-  text-decoration: none;
-}
-
-a {
-  text-decoration: none;
-  font-weight: bold;
-  /*color: #16ABDD;*/
-  color: #2b9af3;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-
-}
-
-a:hover, a.aHover {
-  color: #0C85AD;
-  color: #2575be;
-  text-decoration: underline;
-}
-
-h1 {
-  font-size: 32px;
-  line-height: 34px;
-  color: #91B4B7;
-  font-weight: normal;
-  margin: 0 0 10px 0
-}
-
-h2 {
-  font-size: 28px;
-  color: #34495e;
-  font-weight: normal;
-  margin: 0 0 10px 0
-}
-
-h3 {
-  text-decoration: none;
-  color: #1e2f41;
-  font-size: 16px;
-  margin: 0;
-}
-
-h4 {
-  font-size: 16px;
-  padding: 5px 0;
-  color: #617777;
-  margin: 0
-}
 
 #savingMessage {
   background-color: #E3EDED;
@@ -247,42 +193,34 @@ table styles
 -------------------------------------------------------
 */
 
-.table {
+.TWGanttWorkSpace .table {
   width: 100%;
 }
-
-TH, .tableHeader {
+.TWGanttWorkSpace TH, .tableHeader {
   font-weight: normal;
   color: #555;
   border: none;
   background-color: #f0f0f0;
   padding: 2px
 }
-
-.list td{
+.TWGanttWorkSpace .list td{
   border-bottom: 1px solid #dedede;
   padding: 5px 0;
 }
-
-.list th {
+.TWGanttWorkSpace .list th {
   padding: 5px 2px
 }
-
-.row em {font-style: normal;color: #a2a2a2}
-
-
-.ganttTaskEditor h2 {
+.TWGanttWorkSpace .row em {font-style: normal;color: #a2a2a2}
+.TWGanttWorkSpace .ganttTaskEditor h2 {
   text-transform: capitalize
 
 }
-
-.ganttTaskEditor .formElements,
+.TWGanttWorkSpace .ganttTaskEditor .formElements,
 .resourceEditor .formElements {
   background-color: #F5F5F5;
   border-color: #CECECE
 }
-
-table .resRow td, table .assigEditRow td {
+.TWGanttWorkSpace table .resRow td, .TWGanttWorkSpace table .assigEditRow td {
   border-bottom: 1px solid #cecece;
   padding: 5px 0
 }
@@ -296,21 +234,17 @@ Gantt Online
 -------------------------------------------------------
 */
 
-
-.servicesEnroll h2 {
+.TWGanttWorkSpace .servicesEnroll h2 {
   margin-bottom: 20px
 }
-
-.heading {
+.TWGanttWorkSpace .heading {
   text-align: center;
 }
-.heading img {
+.TWGanttWorkSpace .heading img {
   display:block;
   margin: -20px auto 30px;
 }
-
-
-.twAds {
+.TWGanttWorkSpace .twAds {
   height: 38px;
   background-color: #5ACADF;
   width: 100%;
@@ -319,18 +253,15 @@ Gantt Online
   color: #fff;
   z-index: 1000;
 }
-
-.twAds.light {
+.TWGanttWorkSpace .twAds.light {
   padding-top: 8px
 }
-
-.twAds .twitterButton {
+.TWGanttWorkSpace .twAds .twitterButton {
   vertical-align: middle;
   display: inline-block;
   margin-left: 15px
 }
-
-.twAds .remove {
+.TWGanttWorkSpace .twAds .remove {
  display: inline-block;
  line-height: 38px;
   color: #fff;
@@ -339,49 +270,40 @@ Gantt Online
   top:0;
   right: 12px
 }
-
-.twAds a {
+.TWGanttWorkSpace .twAds a {
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.40)
 }
-
-.twAds a:hover {
+.TWGanttWorkSpace .twAds a:hover {
   text-decoration: none
 }
-
-.servicesEnroll .oauth {
+.TWGanttWorkSpace .servicesEnroll .oauth {
   width: 90px;
   height: auto;
 }
-
-.servicesEnroll .oauth:hover {
+.TWGanttWorkSpace .servicesEnroll .oauth:hover {
   opacity: .8
 }
-
-.errImg img {
+.TWGanttWorkSpace .errImg img {
   width: 25px;
   height: auto;
   vertical-align: middle;
 }
-
-#__FEEDBACKMESSAGEPLACE {
+.TWGanttWorkSpace #__FEEDBACKMESSAGEPLACE {
   position: absolute;
   background-color: #fafad2;
 }
-
-.adminLogin .formElements {
+.TWGanttWorkSpace .adminLogin .formElements {
 width: 120px;
 }
-
-.adminLogin {
+.TWGanttWorkSpace .adminLogin {
   width: 350px;
   margin: 0 auto;
   position: absolute;
   bottom: 10px;
   left: 20px;
 }
-
-.lastMod {
+.TWGanttWorkSpace .lastMod {
   font-style: italic;
   margin-right: 10px;
   vertical-align: middle;
@@ -394,24 +316,20 @@ width: 120px;
   padding: 5px 10px;
   background-color: rgba(255, 255, 0, 0.16);
 }
-
-.lastMod .teamworkIcon {
+.TWGanttWorkSpace .lastMod .teamworkIcon {
   color: #34495e;
   font-size: 160%;
   vertical-align: middle;
 }
-
-.button.textual,
-.button.buttonImg,
-.ganttButtonSeparator {
+.TWGanttWorkSpace .button.textual,
+.TWGanttWorkSpace .button.buttonImg,
+.TWGanttWorkSpace .ganttButtonSeparator {
   vertical-align: middle;
 }
-
-.button span.teamworkIcon {
+.TWGanttWorkSpace .button span.teamworkIcon {
   font-size: .95em;
 }
-
-.clearfix:after {
+.TWGanttWorkSpace .clearfix:after {
   visibility: hidden;
   display: block;
   font-size: 0;
@@ -419,9 +337,7 @@ width: 120px;
   clear: both;
   height: 0;
 }
-
-
-.embedCode {
+.TWGanttWorkSpace .embedCode {
   font-family: Consolas,monospace!important;
   font-size: 100%;
   width: 100%;
@@ -429,30 +345,20 @@ width: 120px;
   padding: 10px;
   border: 4px solid #d0d0d0
 }
-
-.ruler {
+.TWGanttWorkSpace .ruler {
   width: 100%;
   display: block;
   padding: 35px 0 35px;
   height: 1px;
 }
-
-.ruler.short span {
+.TWGanttWorkSpace .ruler.short span {
   width: 100px;
   height: 1px;
   display: block;
   margin: 0 auto;
   border-bottom:1px solid #ccc
 }
-
-
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
-
-
+.TWGanttWorkSpace .clearfix { display: inline-block; }
 
 /*
 -------------------------------------------------------
@@ -460,19 +366,15 @@ Buttons
 -------------------------------------------------------
 */
 
-.buttonBar {
+.TWGanttWorkSpace .buttonBar {
 }
-
-.buttonBar.centered {
+.TWGanttWorkSpace .buttonBar.centered {
  text-align: center
 }
-
-.buttonBar.block .button {
+.TWGanttWorkSpace .buttonBar.block .button {
   margin: 0 0 20px
 }
-
-
-.button {
+.TWGanttWorkSpace .button {
   display: inline-block;
   font-size: 110%;
   color: #fff;
@@ -492,41 +394,32 @@ Buttons
   -o-transition: background-color 500ms ease-out 1s;
   transition: background-color 500ms ease-out 1s;
 }
-
-.button.first {
+.TWGanttWorkSpace .button.first {
   background-color: #75a800;
   font-weight: bold;
 }
-
-.button.small {
+.TWGanttWorkSpace .button.small {
   font-size: 100%;
   padding: 2px 7px 4px;
   margin-bottom: 0
 
 }
-
-.large {
+.TWGanttWorkSpace .large {
   font-size: 160%;
   padding: 5px 14px 8px;
   border-radius: 6px
 }
-
-
-
-.button.first:hover {
+.TWGanttWorkSpace .button.first:hover {
   background-color: #2F2F2F;
 }
-
-.button[disabled] {
+.TWGanttWorkSpace .button[disabled] {
   cursor: default;
   opacity: 0.4
 }
-
-.button:hover[disabled] {
+.TWGanttWorkSpace .button:hover[disabled] {
   background-color: #BABABA
 }
-
-.button.textual, .button.buttonImg {
+.TWGanttWorkSpace .button.textual, .button.buttonImg {
   border: none;
   background-color: transparent;
   color: #68979B;
@@ -538,62 +431,50 @@ Buttons
   margin: 0;
   text-align: left
 }
-
-.button.opt {
+.TWGanttWorkSpace .button.opt {
   background-color: #009E94;
   background-color: #2792E6;
 }
-
-.button.edit {
+.TWGanttWorkSpace .button.edit {
   color: #009E94;
   padding: 0;
   margin: 0
 }
-
-.button.delete {
+.TWGanttWorkSpace .button.delete {
   color: #B61E2D;
   padding: 0;
   margin: 0
 }
-
-.button:hover {
+.TWGanttWorkSpace .button:hover {
   background-color: #506b84;
   color: rgba(255, 255, 255, 0.75);
 }
-
-a.button:hover {
+.TWGanttWorkSpace a.button:hover {
   text-decoration: none
 }
-
-.button.textual:hover, .button.buttonImg:hover {
+.TWGanttWorkSpace .button.textual:hover, .TWGanttWorkSpace .button.buttonImg:hover {
   background-color: transparent;
 }
-
-span.separator {
+.TWGanttWorkSpace span.separator {
   display: inline-block;
 }
-
-.button.add {
+.TWGanttWorkSpace .button.add {
   color: #009E94;
 }
-
-.button.add .teamworkIcon {
+.TWGanttWorkSpace .button.add .teamworkIcon {
   color: #009E94;
 }
-
-form {
+.TWGanttWorkSpace form {
   margin: 0;
   padding: 0;
 }
-
-select {
+.TWGanttWorkSpace select {
   border: 1px solid #91B4B7;
   padding: 4px;
   font-size: 16px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-
-.formElements {
+.TWGanttWorkSpace .formElements {
   background-color: white;
   padding: 4px;
   font-size: 16px;
@@ -604,25 +485,21 @@ select {
   border-radius: 3px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-
-.formElementsError {
+.TWGanttWorkSpace .formElementsError {
   border: 1px solid #ff0000;
 }
-
-.formElementExclamation {
+.TWGanttWorkSpace .formElementExclamation {
   width: 15px;
   height: 25px;
   mmmargin-left: -20px;
   mmmposition: absolute;
   background: url("../../applications/gantt/distrib/res/alert.gif") no-repeat;
 }
-
-span#FLD_LOGIN_NAMEerror, span#FLD_PWDerror {
+.TWGanttWorkSpace span#FLD_LOGIN_NAMEerror, .TWGanttWorkSpace span#FLD_PWDerror {
   margin-left: -23px;
   margin-top: 2px;
 }
-
-input {
+.TWGanttWorkSpace input {
   background-color: white;
   padding: 4px;
   font-size: 16px;
@@ -633,8 +510,7 @@ input {
   border-radius: 3px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-
-.confirmBox {
+.TWGanttWorkSpace .confirmBox {
   display: inline;
   z-index: 10000;
   vertical-align: middle;
@@ -645,57 +521,46 @@ input {
   position: absolute;
   margin: 0 auto
 }
-
-
-
-.confirmBox .confirmNo {
+.TWGanttWorkSpace .confirmBox .confirmNo {
   color: #e06060;
   cursor: pointer;
   font-weight: bolder;
 }
-
-.confirmBox .confirmYes {
+.TWGanttWorkSpace .confirmBox .confirmYes {
   color: #68af6c;
   cursor: pointer;
   font-weight: bolder;
 }
-
-.blackpopup {
+.TWGanttWorkSpace .blackpopup {
   padding: 20px;
   border-radius: 10px;
 }
-
-.smallPopUp {
+.TWGanttWorkSpace .smallPopUp {
   top:0!important;
   margin-top:0!important;
 }
-
-iframe#bwinPopup {
+.TWGanttWorkSpace iframe#bwinPopup {
   border-radius: 10px;
 }
-
-.mainWrap {
+.TWGanttWorkSpace .mainWrap {
   padding: 20px
 }
-
-.mainWrap > h2:first-of-type {
+.TWGanttWorkSpace .mainWrap > h2:first-of-type {
   text-transform: capitalize
 }
 
 
 /******** SHARE BOX *********/
 
-.shareBar {
+.TWGanttWorkSpace .shareBar {
   position: absolute;
   right: 100px;
   top: 0;
 }
-
-.shareBar img:hover {
+.TWGanttWorkSpace .shareBar img:hover {
   opacity: 0.8;
 }
-
-.shareBtn {
+.TWGanttWorkSpace .shareBtn {
   background: none repeat scroll 0 0 #F9F7F7;
   border: 1px solid rgba(0, 0, 0, 0.24);
   border-radius: 3px;
@@ -706,68 +571,56 @@ iframe#bwinPopup {
   padding: 4px 8px 4px 14px;
   text-decoration: none;
 }
-
-.shareBtn {
+.TWGanttWorkSpace .shareBtn {
   cursor: pointer;
 }
-
-.shareBtn:hover {
+.TWGanttWorkSpace .shareBtn:hover {
   border: 1px solid rgba(0, 0, 0, 0.24);
   color: #878686;
   opacity: .7;
 }
-
-.shareBtn img {
+.TWGanttWorkSpace .shareBtn img {
   border: 0 none;
   padding-right: 5px;
   vertical-align: middle;
 }
-
-.shareBtn a {
+.TWGanttWorkSpace .shareBtn a {
   color: #888;
   text-decoration: none;
 }
-
-#shareBox {
+.TWGanttWorkSpace #shareBox {
   text-align: center
 }
-
-#shareBox h2 {
+.TWGanttWorkSpace #shareBox h2 {
   margin-bottom: 30px;
 }
-
-
-#shareBox .shareBtn {
+.TWGanttWorkSpace #shareBox .shareBtn {
   padding: 15px 20px;
   font-size: 30px;
 }
-
-#shareBox .shareBtn.icon-facebook {
+.TWGanttWorkSpace #shareBox .shareBtn.icon-facebook {
   background-color:#3b5998;
   color: #fff;
 }
-
-#shareBox .shareBtn.icon-twitter {
+.TWGanttWorkSpace #shareBox .shareBtn.icon-twitter {
   background-color:#00aced;
   color: #fff;
 }
-
-#shareBox .shareBtn.icon-linkedin {
+.TWGanttWorkSpace #shareBox .shareBtn.icon-linkedin {
   background-color:#007bb6;
   color: #fff;
 }
-#shareBox .shareBtn.icon-gplus {
+.TWGanttWorkSpace #shareBox .shareBtn.icon-gplus {
   background-color:#dd4b39;
   color: #fff;
 }
-
-#shareBox .shareBtn span {
+.TWGanttWorkSpace #shareBox .shareBtn span {
   display: none;
 }
 
 
 /*-------------------------------------------------   MODAL POPUP (ex blackPopup) ------------------------------------------------------*/
-.modalPopup {
+.TWGanttWorkSpace .modalPopup {
   position:fixed;
   top:0;
   left:0;
@@ -776,26 +629,21 @@ iframe#bwinPopup {
   background-color:rgba(255,255,255,.8);
   z-index: 100;
 }
-
-.modalPopup.upgradeMessage {
+.TWGanttWorkSpace .modalPopup.upgradeMessage {
   top:40px;
   text-align: center;
 }
-
-.modalPopup.upgradeMessage p {
+.TWGanttWorkSpace .modalPopup.upgradeMessage p {
   margin-bottom: 20px;
   line-height: 1.6em;
 }
-
-.modalPopup.inIframe {
+.TWGanttWorkSpace .modalPopup.inIframe {
   background-color:rgba(255,255,255,0);
 }
-
-.modalPopup.black {
+.TWGanttWorkSpace .modalPopup.black {
   background-color: rgba(75, 75, 75, 0.6);
 }
-
-.modalPopup .bwinPopupd{
+.TWGanttWorkSpace .modalPopup .bwinPopupd{
   position: relative;
   box-shadow: 0 0 0 4px rgba(46, 186, 255, 0.3);
   border: 1px solid rgba(127, 127, 127, 0.3);
@@ -804,8 +652,7 @@ iframe#bwinPopup {
   padding: 30px 30px;
   border-radius: 5px;
 }
-
-.modalPopup .popUpClose{
+.TWGanttWorkSpace .modalPopup .popUpClose{
   z-index: 9;
   color: #2f2f2f;
   width: 20px;
@@ -815,27 +662,22 @@ iframe#bwinPopup {
   right: 15px;
   top:15px;
 }
-
-.modalPopup.black .bwinPopupd .popUpClose{
+.TWGanttWorkSpace .modalPopup.black .bwinPopupd .popUpClose{
   color: #ffffff;
 }
-
-.modalPopup.iframe .bwinPopupd {
+.TWGanttWorkSpace .modalPopup.iframe .bwinPopupd {
   overflow: hidden;
   padding: 0;
 }
-
-.modalPopup.iframe .bwinPopupd iframe {
+.TWGanttWorkSpace .modalPopup.iframe .bwinPopupd iframe {
   position: absolute;
   border-radius: 5px;
 }
-
-.modalPopup.inIframe .bwinPopupd {
+.TWGanttWorkSpace .modalPopup.inIframe .bwinPopupd {
   background-color: #f9f9f9;
   border-radius: 0 0 5px 5px;
 }
-
-.offScreen {
+.TWGanttWorkSpace .offScreen {
   position: absolute;
   left: -5000px;
 }
