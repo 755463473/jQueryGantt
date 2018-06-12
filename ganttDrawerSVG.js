@@ -31,6 +31,7 @@ function Ganttalendar(startMillis, endMillis, master, minGanttSize) {
 	this.svg; // instance of svg object containing gantt
 	this.tasksGroup; //instance of svg group containing tasks
 	this.linksGroup; //instance of svg group containing links
+	this.depsGroup; //instance of svg group containing dependency lines
 
 	this.minGanttSize = minGanttSize;
 	this.includeToday = false; //when true today is always visible. If false boundaries comes from tasks periods
@@ -1050,6 +1051,7 @@ Ganttalendar.prototype.reset = function () {
 Ganttalendar.prototype.redrawTasks = function (drawAll) {
 	//console.debug("redrawTasks ");
 	var self = this;
+	drawAll = true;
 	//var prof = new Profiler("ganttRedrawTasks");
 
 	self.element.find("table.ganttTable").height(self.master.editor.element.height());
@@ -1059,7 +1061,7 @@ Ganttalendar.prototype.redrawTasks = function (drawAll) {
 	var startRowAdd = self.master.firstScreenLine - self.master.rowBufferSize;
 	var endRowAdd = self.master.firstScreenLine + self.master.numOfVisibleRows + self.master.rowBufferSize;
 
-	$("#linksGroup,#tasksGroup").empty();
+	$("#linksGroup,#tasksGroup,#depsGroup").empty();
 	var gridGroup = $("#gridGroup").empty().get(0);
 
 	//add missing ones
@@ -1149,7 +1151,6 @@ Ganttalendar.prototype.setBestFittingZoom = function () {
 Ganttalendar.prototype.redraw = function () {
 	//console.debug("redraw",this.zoom, this.originalStartMillis, this.originalEndMillis);
 	//var prof= new Profiler("Ganttalendar.redraw");
-
 	if (this.showCriticalPath) {
 		this.master.computeCriticalPath();
 	}
