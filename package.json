@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "jQuery Gantt editor",
   "dependencies": {
-    "jquery": "https://github.com/patryk/jquery.timers",
+    "jquery-timers": "https://github.com/patryk/jquery.timers",
     "svg": "https://github.com/kbwood/svg"
   },
   "repository": {
