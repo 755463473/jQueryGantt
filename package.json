@@ -1,5 +1,5 @@
 {
-  "name": "jQueryGantt",
+  "name": "jquery-gantt-editor",
   "version": "1.0.0",
   "description": "jQuery Gantt editor",
   "dependencies": {
