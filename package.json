@@ -1,6 +1,6 @@
 {
   "name": "jquery-gantt-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "jQuery Gantt editor",
   "dependencies": {
     "jquery": "https://github.com/patryk/jquery.timers",
