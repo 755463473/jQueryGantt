@@ -47,7 +47,7 @@ function GanttMaster(templateFunctions = []) {
 	this.fillWithEmptyLines = false; //when is used by widget it could be usefull to do not fill with empty lines
 
 	this.rowHeight = 30; // todo get it from css?
-	this.minRowsInEditor = 30; // number of rows always visible in editor
+	this.minRowsInEditor = 0; // number of rows always visible in editor
 	this.numOfVisibleRows = 0; //number of visible rows in the editor
 	this.firstScreenLine = 0; //first visible row ignoring collapsed tasks
 	this.rowBufferSize = 5000;
@@ -265,13 +265,11 @@ GanttMaster.prototype.init = function (workSpace) {
 
 	//resize
 	$(window).resize(function () {
-		place.css({width: "100%", height: $(window).height() - place.position().top});
+		place.css({width: "100%", height: place.find('.gdfWrapper').height() + 30});
 		place.trigger("resize.gantt");
 	}).oneTime(2, "resize", function () {
 		$(window).trigger("resize")
 	});
-
-
 };
 
 GanttMaster.messages = {
